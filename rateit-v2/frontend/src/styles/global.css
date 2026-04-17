@@ -1,0 +1,104 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fdf8f3;
+  color: #2d2d2d;
+}
+
+/* ── Boutons ── */
+.btn-primary {
+  background: #e8572a;
+  color: white;
+  border: none;
+  padding: 11px 24px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: #c94820; }
+.btn-primary:disabled { background: #ccc; cursor: not-allowed; }
+
+.btn-outline {
+  background: transparent;
+  color: #e8572a;
+  border: 2px solid #e8572a;
+  padding: 9px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: #e8572a; color: white; }
+
+.btn-danger {
+  background: #fff0ee;
+  color: #c0392b;
+  border: 1px solid #f5c6c0;
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-danger:hover { background: #c0392b; color: white; }
+
+/* ── Inputs ── */
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e0d8d0;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #2d2d2d;
+  transition: border-color 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.input:focus { outline: none; border-color: #e8572a; }
+
+/* ── Cartes ── */
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+/* ── Alerts ── */
+.alert-error {
+  background: #fff0ee;
+  border: 1px solid #f5c6c0;
+  color: #c0392b;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.alert-success {
+  background: #eafaf1;
+  border: 1px solid #a9dfbf;
+  color: #1e8449;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-admin  { background: #fff0ee; color: #c94820; }
+.badge-user   { background: #eaf3fb; color: #1a6fa8; }
+.badge-cat    { background: #fdf0e6; color: #a05c20; border: 1px solid #f0d5b0; }
