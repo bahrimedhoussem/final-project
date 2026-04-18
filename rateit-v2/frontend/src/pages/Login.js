@@ -11,7 +11,8 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); setLoading(true);
+    setError('');
+    setLoading(true);
     try {
       const res = await api.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
@@ -19,7 +20,7 @@ export default function Login() {
       navigate('/');
       window.location.reload();
     } catch (e) {
-      setError(e.response?.data?.message || 'Erreur de connexion');
+      setError(e.response?.data?.message || 'Email ou mot de passe incorrect');
     } finally { setLoading(false); }
   };
 
@@ -28,36 +29,61 @@ export default function Login() {
       <div style={{ background: 'white', borderRadius: '20px', padding: '48px', width: '100%', maxWidth: '420px', boxShadow: '0 4px 24px rgba(0,0,0,0.1)' }}>
 
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '30px', color: '#2d2d2d' }}>Bon retour 👋</h1>
-          <p style={{ color: '#999', marginTop: '8px', fontSize: '14px' }}>Connectez-vous à votre compte RateIt</p>
-        </div>
-
-        {/* Comptes de démo */}
-        <div style={{ background: '#fdf8f3', border: '1px dashed #e0d0c0', borderRadius: '10px', padding: '14px 16px', marginBottom: '24px', fontSize: '13px', color: '#a05c20' }}>
-          <strong>Comptes de démo :</strong><br/>
-          👑 admin@rateit.com / admin123<br/>
-          👤 sophie@gmail.com / user123
+          <div style={{ fontSize: '40px', marginBottom: '12px' }}>👋</div>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '30px', color: '#2d2d2d' }}>
+            Bon retour !
+          </h1>
+          <p style={{ color: '#999', marginTop: '8px', fontSize: '14px' }}>
+            Connectez-vous à votre compte RateIt
+          </p>
         </div>
 
         {error && <div className="alert-error">{error}</div>}
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <label style={{ fontWeight: 600, fontSize: '14px', display: 'block', marginBottom: '6px' }}>Email</label>
-            <input className="input" type="email" value={email} onChange={e => setEmail(e.target.value)} required placeholder="votre@email.com" />
+            <label style={{ fontWeight: 600, fontSize: '14px', display: 'block', marginBottom: '6px' }}>
+              Email
+            </label>
+            <input
+              className="input"
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+              placeholder="votre@email.com"
+            />
           </div>
+
           <div>
-            <label style={{ fontWeight: 600, fontSize: '14px', display: 'block', marginBottom: '6px' }}>Mot de passe</label>
-            <input className="input" type="password" value={password} onChange={e => setPassword(e.target.value)} required placeholder="••••••••" />
+            <label style={{ fontWeight: 600, fontSize: '14px', display: 'block', marginBottom: '6px' }}>
+              Mot de passe
+            </label>
+            <input
+              className="input"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+              placeholder="••••••••"
+            />
           </div>
-          <button type="submit" className="btn-primary" disabled={loading} style={{ marginTop: '4px', width: '100%', padding: '13px' }}>
-            {loading ? 'Connexion…' : 'Se connecter'}
+
+          <button
+            type="submit"
+            className="btn-primary"
+            disabled={loading}
+            style={{ marginTop: '8px', width: '100%', padding: '13px', fontSize: '16px' }}
+          >
+            {loading ? 'Connexion...' : 'Se connecter'}
           </button>
         </form>
 
         <p style={{ textAlign: 'center', marginTop: '24px', color: '#888', fontSize: '14px' }}>
           Pas encore de compte ?{' '}
-          <Link to="/register" style={{ color: '#e8572a', fontWeight: 600, textDecoration: 'none' }}>S'inscrire</Link>
+          <Link to="/register" style={{ color: '#e8572a', fontWeight: 600, textDecoration: 'none' }}>
+            S'inscrire gratuitement
+          </Link>
         </p>
       </div>
     </div>
